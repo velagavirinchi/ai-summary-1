@@ -1,0 +1,11 @@
+celery
+redis
+pymongo
+requests
+beautifulsoup4
+python-dotenv
+groq
+trafilatura
+youtube-transcript-api
+pypdf
+lxml

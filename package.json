@@ -1,0 +1,14 @@
+{
+  "name": "ai-reading-list-root",
+  "version": "1.0.0",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../client && npm install && cd ../worker && python -m pip install -r requirements.txt",
+    "backend": "npm start --prefix backend",
+    "client": "npm start --prefix client",
+    "worker": "cd worker && python -m celery -A tasks worker --loglevel=info --pool=solo",
+    "start": "concurrently -n \"API,UI,AI-WORKER\" -c \"blue,magenta,yellow\" \"npm run backend\" \"npm run client\" \"npm run worker\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  }
+}
