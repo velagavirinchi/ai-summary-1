@@ -8,7 +8,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // --- API CONFIG ---
-const API = axios.create({ baseURL: 'http://localhost:5000/api' });
+// --- API CONFIG ---
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
+
+const API = axios.create({
+  baseURL: `${API_BASE_URL}/api`,
+});
+
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('token')) req.headers['x-auth-token'] = localStorage.getItem('token');
   return req;
